@@ -1,6 +1,7 @@
 package com.zhou.dagger2
 
 import android.os.Bundle
+import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -15,6 +16,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+
+    private var userRepository: UserRepository? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +35,9 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+        val daggerApplicationGraph = DaggerApplicationGraph.create()
+        Log.d("zjb", "${daggerApplicationGraph.repository().hashCode()}")
+        Log.d("zjb", "${daggerApplicationGraph.repository().hashCode()}")
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
